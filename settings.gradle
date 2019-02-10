@@ -1,0 +1,4 @@
+rootProject.name = 'NettyChat'
+
+include("chat-server")
+include("chat-client")
