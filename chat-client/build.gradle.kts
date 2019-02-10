@@ -5,6 +5,7 @@ plugins {
 }
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+    implementation("io.netty", "netty-all", "4.1.10.Final")
 }
 repositories {
     mavenCentral()
