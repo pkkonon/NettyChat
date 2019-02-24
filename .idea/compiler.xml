@@ -2,8 +2,16 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="NettyChat.chat-client.main" target="1.8" />
+      <module name="NettyChat.chat-client.test" target="1.8" />
+      <module name="NettyChat.chat-server.main" target="1.8" />
+      <module name="NettyChat.chat-server.test" target="1.8" />
+      <module name="NettyChat.netty-server.main" target="1.8" />
+      <module name="NettyChat.netty-server.test" target="1.8" />
       <module name="NettyChat.NettyChat.main" target="1.8" />
       <module name="NettyChat.NettyChat.test" target="1.8" />
+      <module name="NettyChat.server.main" target="1.8" />
+      <module name="NettyChat.server.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

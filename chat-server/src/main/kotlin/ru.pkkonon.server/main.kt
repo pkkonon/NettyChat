@@ -15,7 +15,7 @@ fun main(args: Array<String>) {
         val serverBootstrap = ServerBootstrap()
         serverBootstrap.group(group)
         serverBootstrap.channel(NioServerSocketChannel::class.java)
-        serverBootstrap.localAddress(InetSocketAddress("localhost", 9999))
+        serverBootstrap.localAddress(InetSocketAddress("localhost", 6666))
 
         serverBootstrap.childHandler(object : ChannelInitializer<SocketChannel>() {
             @Throws(Exception::class)
