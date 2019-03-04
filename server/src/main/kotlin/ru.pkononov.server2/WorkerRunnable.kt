@@ -1,7 +1,12 @@
 package ru.pkononov.server2
 
-import java.io.IOException
+import java.io.*
 import java.net.Socket
+import java.nio.charset.StandardCharsets
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.io.IOException
+
 
 class WorkerRunnable(clientSocket: Socket, serverText: String) : Runnable {
 
@@ -16,16 +21,28 @@ class WorkerRunnable(clientSocket: Socket, serverText: String) : Runnable {
     override fun run() {
         try {
             val input = clientSocket!!.getInputStream()
-            val output = clientSocket!!.getOutputStream()
+            val output = PrintWriter(clientSocket!!.getOutputStream())
             val time = System.currentTimeMillis()
 
 
-            val byteArray = ("HTTP/1.1 200 OK\n\nWorkerRunnable: " +
-                    this.serverText + " - " +
-                    time +
-                    "").toByteArray()
+            var url = ClassLoader.getSystemClassLoader().getResource("index.html").toURI()
 
-            output.write(byteArray)
+
+            val path = Paths.get(url).toString()
+
+            val contentBuilder = StringBuilder()
+
+            try {
+                Files.lines(Paths.get(path), StandardCharsets.UTF_8)
+                    .use { stream -> stream.forEach { s -> contentBuilder.append(s).append("\n") } }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            output.println("HTTP/1.1 200 OK")
+            output.println("Content-type: text/html")
+            output.println("\r\n")
+            output.println(contentBuilder)
+            output.flush()
             output.close()
             input.close()
             println("Request processed: $time")
@@ -37,4 +54,3 @@ class WorkerRunnable(clientSocket: Socket, serverText: String) : Runnable {
     }
 }
 
-//ClassLoader.getSystemClassLoader().getResource
