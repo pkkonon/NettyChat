@@ -12,7 +12,7 @@ class ThreadPooledServer(port : Int) : Runnable{
     protected var serverSocket:ServerSocket? = null
     protected var isStopped = false
     protected var runningThread : Thread? = null
-    protected val threadPool = Executors.newFixedThreadPool(500)
+    protected val threadPool = Executors.newFixedThreadPool(20)
 
     override fun run() {
         synchronized(this){

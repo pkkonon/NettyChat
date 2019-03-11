@@ -40,7 +40,7 @@ class WorkerRunnable(clientSocket: Socket, serverText: String) : Runnable {
             }
             output.println("HTTP/1.1 200 OK")
             output.println("Content-type: text/html")
-            output.println("\r\n")
+            output.println("\n\n")
             output.println(contentBuilder)
             output.flush()
             output.close()
