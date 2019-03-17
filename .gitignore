@@ -1,0 +1,13 @@
+.gradle/
+build/
+out/
+tmp/
+.DS_Store
+
+*.iml
+.idea/*
+!.idea/runConfigurations/
+!.idea/dictionaries/
+!.idea/codeStyles/codeStyleConfig.xml
+!.idea/inspectionProfiles/
+!.idea/gradle.xml
